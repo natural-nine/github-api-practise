@@ -5,25 +5,13 @@ import Home from "./pages/Home";
 import Save from "./pages/Save";
 
 function App() {
-  const GlobalStyles = createGlobalStyle`
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    /* background-color: #2c3e50; */
-}
-body {
-box-sizing: border-box;
-}
-`;
   return (
-    <>
-      <GlobalStyles />
+    <React.Fragment>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="save" element={<Save />} />
       </Routes>
-    </>
+    </React.Fragment>
   );
 }
 
