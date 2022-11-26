@@ -1,18 +1,30 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import { createGlobalStyle } from "styled-components";
+import styled from "styled-components";
+import Header from "./components/Header";
+import Sider from "./components/Sider";
 import Home from "./pages/Home";
 import Save from "./pages/Save";
 
 function App() {
   return (
     <React.Fragment>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="save" element={<Save />} />
-      </Routes>
+      <Header />
+      <Center>
+        <Sider />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/save" element={<Save />} />
+        </Routes>
+      </Center>
     </React.Fragment>
   );
 }
+
+const Center = styled.div`
+  height: 92vh;
+  display: flex;
+  flex-direction: row;
+`;
 
 export default App;
