@@ -6,9 +6,9 @@ const Home = () => {
 };
 
 const Wrap = styled.div`
-  width: 85%;
-  height: auto;
+  width: 100%;
+  height: 100vh;
   margin: auto;
-  background-color: gray;
+  background-color: #ecf0f1;
 `;
 export default Home;
