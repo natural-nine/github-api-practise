@@ -6,6 +6,8 @@ const GlobalStyles = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
     font-size: 100%;
+    font: inherit;
+	  vertical-align: baseline;
 	font: inherit;
 	vertical-align: baseline;
   }
