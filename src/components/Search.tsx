@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-
-const Search = () => {
+import { SearchTypes } from "../types/searchTypes";
+const Search = ({ searchRef, submitClick }: SearchTypes) => {
   return (
     <SearchBox>
-      <SearchInput placeholder="Search Github Repositories" />
-      <Btn>Search</Btn>
+      <SearchInput ref={searchRef} placeholder="Search Github Repositories" />
+      <Btn onClick={submitClick}>Search</Btn>
     </SearchBox>
   );
 };

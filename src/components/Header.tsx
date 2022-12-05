@@ -1,18 +1,26 @@
-import React from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
 import moonLine from "../assets/images/test.png";
 import Search from "./Search";
 import ThemeMode from "./ThemeMode";
 import { FaGithub } from "react-icons/fa";
+import { useLocation } from "react-router-dom";
+import { useSetRecoilState } from "recoil";
+import { searchValue } from "../recoil/atoms";
 
 const Header = () => {
+  const searchRef = useRef<HTMLInputElement>(null);
+  const setIsSearch = useSetRecoilState(searchValue);
+  const submitClick = () => {
+    setIsSearch(searchRef.current!.value);
+  };
   return (
     <Wrap>
       <IconBox>
         <GithubIcon />
       </IconBox>
       <SearchThemeBox>
-        <Search />
+        <Search searchRef={searchRef} submitClick={submitClick} />
         <ThemeMode />
       </SearchThemeBox>
     </Wrap>
@@ -27,6 +35,8 @@ const Wrap = styled.section`
   justify-content: space-between;
   align-items: center;
   padding: 0px 50px;
+  background-color: #fff;
+  border-bottom: 2px solid #f6f9fa;
 `;
 
 const IconBox = styled.div`

@@ -27,13 +27,12 @@ const Sider = () => {
 };
 
 const SideNav = styled.section`
-  display: flex;
-  flex-direction: column;
-  position: fixed;
-  min-height: 100vh;
-  background-color: #fff;
-  width: 18%;
-  padding: 100px 15px;
+  /* display: flex;
+  flex-direction: column; */
+  min-height: 170px;
+  width: 25%;
+  padding: 50px 15px 0px 50px;
+  border: 1px solid red;
 `;
 
 const PageBar = styled.div`
@@ -44,6 +43,8 @@ const PageBar = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border: 1px solid blue;
+  border-radius: 10px;
   div {
     width: 100%;
     height: 100%;
@@ -55,20 +56,20 @@ const PageBar = styled.div`
     /* opacity: 0.7; */
     span {
       margin-left: 10px;
-      font-size: 1.5rem;
+      font-size: 1.2rem;
     }
   }
 `;
 
 const HomeBox = styled.div<{ props: string }>`
   margin-bottom: 20px;
-  background-color: ${props => props.props === "/" && "#eeeff1"};
+  background-color: ${props => props.props === "/" && "#f4f2ff"};
   box-shadow: ${props =>
     props.props === "/" && "0px 12px 42px rgba(0, 0, 0, 0.2)"};
   opacity: ${props => props.props !== "/" && "0.4"};
 `;
 const SaveBox = styled.div<{ props: string }>`
-  background-color: ${props => props.props === "/save" && "#eeeff1"};
+  background-color: ${props => props.props === "/save" && "#f4f2ff"};
   box-shadow: ${props =>
     props.props === "/save" && "0px 12px 42px rgba(0, 0, 0, 0.2)"};
   opacity: ${props => props.props !== "/save" && "0.4"};
