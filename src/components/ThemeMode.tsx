@@ -3,20 +3,18 @@ import styled from "styled-components";
 import MoonIcon from "./MoonIcon";
 import SunIcon from "./SunIcon";
 import "../styles/switch.css";
+import useToggle from "../hooks/useToggle";
 
 const ThemeMode = () => {
-  const [isToggled, setIsToggled] = useState<boolean>(false);
-  const onToggle = (): void => {
-    setIsToggled(!isToggled);
-  };
+  const [toggle, setToggle] = useToggle(false);
   return (
     <ThemeBox>
-      <SunIcon isToggled={isToggled} />
+      <SunIcon toggle={toggle} />
       <label className="toggle-switch">
-        <input type="checkbox" checked={isToggled} onChange={onToggle} />
+        <input type="checkbox" checked={toggle} onChange={() => setToggle()} />
         <span className="switch" />
       </label>
-      <MoonIcon isToggled={isToggled} />
+      <MoonIcon toggle={toggle} />
     </ThemeBox>
   );
 };

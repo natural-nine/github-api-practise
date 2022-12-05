@@ -22,9 +22,9 @@ function App() {
 }
 
 const Center = styled.div`
-  height: 92vh;
+  height: 85vh;
   display: flex;
-  flex-direction: row;
+  /* flex-direction: row; */
 `;
 
 export default App;
