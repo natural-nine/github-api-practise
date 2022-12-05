@@ -87,9 +87,4 @@ const SaveIcon = styled(FaAlignJustify)`
   font-size: 2rem;
 `;
 
-const NumBox = styled.div`
-  width: 5px;
-  height: 5px;
-  border: 1px solid red;
-`;
 export default Sider;

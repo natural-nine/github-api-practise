@@ -25,7 +25,7 @@ const SearchRepoList = ({
               </div>
               <div>
                 <StarIcon />
-                <span>{i.forks_count}</span>
+                <span>{i.stargazers_count}</span>
                 <CircleIcon props={getCreateLanColor(i.language)} />
                 <span>{i.language}</span>
                 <span>Updated {getCreateDate(i.updated_at)}</span>

@@ -2,8 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import instance from "../axios/axios";
 import { useInfiniteQuery } from "react-query";
-import { useRecoilValue } from "recoil";
-import { searchValue } from "../recoil/atoms";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { orderingValue, searchValue, sortValue } from "../recoil/atoms";
 import SearchRepoList from "../components/SearchRepoList";
 import Loading from "../components/Loading";
 import { IdataTypes } from "../types/repoListTypes";
@@ -11,15 +11,17 @@ import Optional from "../components/Optional";
 
 const Home = () => {
   const isSearchValue = useRecoilValue(searchValue);
+  const [isOrderValue, setIsOrderValue] = useRecoilState(orderingValue);
+  const [isSortValue, setIsSortValue] = useRecoilState(sortValue);
   const getSearchData = async (pageParam: number) => {
     const { data } = await instance.get<IdataTypes>(
-      `/search/repositories?q=${isSearchValue}&page=${pageParam}`
+      `/search/repositories?q=${isSearchValue}&page=${pageParam}&order=${isOrderValue}&sort=${isSortValue}`
     );
     return { data, nextPage: pageParam + 1 };
   };
-  const { data, isLoading, isFetching, fetchNextPage, hasNextPage, isError } =
+  const { data, isLoading, isFetching, fetchNextPage, hasNextPage } =
     useInfiniteQuery(
-      ["repoData", isSearchValue],
+      ["repoData", isSearchValue, isOrderValue, isSortValue],
       ({ pageParam = 1 }) => getSearchData(pageParam),
       {
         getNextPageParam: (lastPage, allPages) => {
@@ -29,14 +31,34 @@ const Home = () => {
           return nextPage <= maxPages ? nextPage : undefined;
         },
         enabled: !!isSearchValue,
+        refetchOnWindowFocus: false,
       }
     );
   return (
     <Wrap>
       {isLoading && !isFetching && <Loading />}
+      {/* {data && isSortValue && (
+        <Optional
+          isOrderValue={isOrderValue}
+          setIsOrderValue={setIsOrderValue}
+          isSortValue={isSortValue}
+          setIsSortValue={setIsSortValue}
+        />
+      )} */}
+      {/* <Optional
+        isOrderValue={isOrderValue}
+        setIsOrderValue={setIsOrderValue}
+        isSortValue={isSortValue}
+        setIsSortValue={setIsSortValue}
+      /> */}
       {data && (
         <React.Fragment>
-          <Optional />
+          <Optional
+            isOrderValue={isOrderValue}
+            setIsOrderValue={setIsOrderValue}
+            isSortValue={isSortValue}
+            setIsSortValue={setIsSortValue}
+          />
           <SearchRepoList
             data={data}
             fetchNextPage={fetchNextPage}
