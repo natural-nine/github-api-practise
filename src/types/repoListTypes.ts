@@ -9,9 +9,9 @@ interface itemsTypes {
   owner: IownerTypes;
   description: string;
   language: string;
-  forks_count: number;
+  stargazers_count: number;
   updated_at: string;
-  id:number;
+  id: number;
 }
 export interface IdataTypes {
   incomplete_results: boolean;
