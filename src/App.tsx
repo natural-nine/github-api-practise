@@ -22,7 +22,7 @@ function App() {
 }
 
 const Center = styled.div`
-  height: 85vh;
+  height: auto;
   display: flex;
   /* flex-direction: row; */
 `;
