@@ -1,13 +1,18 @@
 import { atom } from "recoil";
 
-export const searchValue = atom<string>({
+export const searchRepoValue = atom<string>({
   key: "searchRepo",
   default: "",
 });
 
-export const searchValue2 = atom<string>({
+export const searchUserValue = atom<string>({
   key: "searchUser",
-  default: "natural",
+  default: "",
+});
+
+export const searchOption = atom<string>({
+  key: "optionVlaue",
+  default: "",
 });
 
 export const orderingValue = atom<string>({

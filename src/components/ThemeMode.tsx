@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import MoonIcon from "./MoonIcon";
 import SunIcon from "./SunIcon";
@@ -25,6 +25,7 @@ const ThemeBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-left: 10px;
 `;
 
 export default ThemeMode;

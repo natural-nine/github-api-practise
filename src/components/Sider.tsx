@@ -32,7 +32,6 @@ const SideNav = styled.section`
   min-height: 170px;
   width: 25%;
   padding: 50px 15px 0px 50px;
-  border: 1px solid red;
 `;
 
 const PageBar = styled.div`
@@ -43,8 +42,10 @@ const PageBar = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
+  border: 0.5px solid #ecf0f1;
   border-radius: 10px;
+  background-color: #fff;
   div {
     width: 100%;
     height: 100%;
@@ -53,15 +54,17 @@ const PageBar = styled.div`
     align-items: center;
     padding: 7px;
     border-radius: 15px;
-    /* opacity: 0.7; */
     span {
       margin-left: 10px;
-      font-size: 1.2rem;
+      font-size: 1.7rem;
     }
   }
 `;
 
 const HomeBox = styled.div<{ props: string }>`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-bottom: 20px;
   background-color: ${props => props.props === "/" && "#f4f2ff"};
   box-shadow: ${props =>
@@ -69,6 +72,9 @@ const HomeBox = styled.div<{ props: string }>`
   opacity: ${props => props.props !== "/" && "0.4"};
 `;
 const SaveBox = styled.div<{ props: string }>`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: ${props => props.props === "/save" && "#f4f2ff"};
   box-shadow: ${props =>
     props.props === "/save" && "0px 12px 42px rgba(0, 0, 0, 0.2)"};
@@ -81,10 +87,10 @@ const SaveBox = styled.div<{ props: string }>`
 `;
 
 const HomeIcon = styled(FaSistrix)`
-  font-size: 2rem;
+  font-size: 1.4rem;
 `;
 const SaveIcon = styled(FaAlignJustify)`
-  font-size: 2rem;
+  font-size: 1.4rem;
 `;
 
 export default Sider;

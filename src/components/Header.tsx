@@ -1,18 +1,29 @@
 import React, { useRef } from "react";
 import styled from "styled-components";
-import moonLine from "../assets/images/test.png";
 import Search from "./Search";
 import ThemeMode from "./ThemeMode";
 import { FaGithub } from "react-icons/fa";
-import { useLocation } from "react-router-dom";
-import { useSetRecoilState } from "recoil";
-import { searchValue } from "../recoil/atoms";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import {
+  searchOption,
+  searchRepoValue,
+  searchUserValue,
+} from "../recoil/atoms";
+import SearchSelect from "./SearchOption";
 
 const Header = () => {
   const searchRef = useRef<HTMLInputElement>(null);
-  const setIsSearch = useSetRecoilState(searchValue);
+  const setIsRepoSearch = useSetRecoilState(searchRepoValue);
+  const setIsUserSearch = useSetRecoilState(searchUserValue);
+  const isOptionValue = useRecoilValue(searchOption);
   const submitClick = () => {
-    setIsSearch(searchRef.current!.value);
+    if (isOptionValue === "Repository") {
+      setIsUserSearch("");
+      setIsRepoSearch(searchRef.current!.value);
+    } else if (isOptionValue === "User") {
+      setIsRepoSearch("");
+      setIsUserSearch(searchRef.current!.value);
+    }
   };
   return (
     <Wrap>
@@ -20,6 +31,7 @@ const Header = () => {
         <GithubIcon />
       </IconBox>
       <SearchThemeBox>
+        <SearchSelect />
         <Search searchRef={searchRef} submitClick={submitClick} />
         <ThemeMode />
       </SearchThemeBox>
@@ -50,7 +62,7 @@ const GithubIcon = styled(FaGithub)`
 `;
 
 const SearchThemeBox = styled.div`
-  width: 60%;
+  width: 65%;
   height: 85%;
   display: flex;
   justify-content: space-between;
