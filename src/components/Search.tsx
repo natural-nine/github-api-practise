@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { SearchTypes } from "../types/searchTypes";
 const Search = ({ searchRef, submitClick }: SearchTypes) => {
   return (
     <SearchBox>
-      <SearchInput ref={searchRef} placeholder="Search Github Repositories" />
+      <SearchInput
+        ref={searchRef}
+        placeholder="Search Github Repositories or Users"
+      />
       <Btn onClick={submitClick}>Search</Btn>
     </SearchBox>
   );
@@ -16,6 +19,7 @@ const SearchBox = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-left: 15px;
 `;
 
 const SearchInput = styled.input`
