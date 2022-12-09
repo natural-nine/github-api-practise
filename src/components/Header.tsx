@@ -27,7 +27,6 @@ const Header = () => {
       setIsUserSearch(searchRef.current!.value);
     }
   };
-  console.log(location.pathname);
   return (
     <Wrap>
       <IconBox>

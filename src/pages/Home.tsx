@@ -48,12 +48,6 @@ const Home = () => {
   );
   return (
     <Wrap>
-      {/* <Optional
-        isOrderValue={isOrderValue}
-        setIsOrderValue={setIsOrderValue}
-        isSortValue={isSortValue}
-        setIsSortValue={setIsSortValue}
-      /> */}
       {isLoading && !isFetching && <Loading />}
       {data && (
         <React.Fragment>
@@ -82,6 +76,7 @@ const Wrap = styled.div`
   padding: 15px 25px;
   display: flex;
   flex-direction: column;
+  border: 1px solid red;
 `;
 
 export default Home;
