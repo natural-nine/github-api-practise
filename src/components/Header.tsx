@@ -10,8 +10,10 @@ import {
   searchUserValue,
 } from "../recoil/atoms";
 import SearchSelect from "./SearchOption";
+import { useLocation } from "react-router-dom";
 
 const Header = () => {
+  const location = useLocation();
   const searchRef = useRef<HTMLInputElement>(null);
   const setIsRepoSearch = useSetRecoilState(searchRepoValue);
   const setIsUserSearch = useSetRecoilState(searchUserValue);
@@ -25,6 +27,7 @@ const Header = () => {
       setIsUserSearch(searchRef.current!.value);
     }
   };
+  console.log(location.pathname);
   return (
     <Wrap>
       <IconBox>
@@ -42,7 +45,6 @@ const Header = () => {
 const Wrap = styled.section`
   width: 100%;
   height: 80px;
-  /* background-color: #34495e; */
   display: flex;
   justify-content: space-between;
   align-items: center;

@@ -27,10 +27,8 @@ const Sider = () => {
 };
 
 const SideNav = styled.section`
-  /* display: flex;
-  flex-direction: column; */
   min-height: 170px;
-  width: 25%;
+  min-width: 25%;
   padding: 50px 15px 0px 50px;
 `;
 
@@ -42,7 +40,6 @@ const PageBar = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* border: 1px solid blue; */
   border: 0.5px solid #ecf0f1;
   border-radius: 10px;
   background-color: #fff;
@@ -56,7 +53,7 @@ const PageBar = styled.div`
     border-radius: 15px;
     span {
       margin-left: 10px;
-      font-size: 1.7rem;
+      font-size: 1.5rem;
     }
   }
 `;
@@ -87,10 +84,10 @@ const SaveBox = styled.div<{ props: string }>`
 `;
 
 const HomeIcon = styled(FaSistrix)`
-  font-size: 1.4rem;
+  font-size: 1.3rem;
 `;
 const SaveIcon = styled(FaAlignJustify)`
-  font-size: 1.4rem;
+  font-size: 1.3rem;
 `;
 
 export default Sider;

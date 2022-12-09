@@ -1,14 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
-import { useRecoilState, useSetRecoilState } from "recoil";
+import { useRecoilState } from "recoil";
 import styled from "styled-components";
 import { pageValue } from "../recoil/atoms";
 import "../styles/pagination.css";
-import {
-  IpageChange,
-  IuserDataTypes,
-  userListTypes,
-} from "../types/userListTypes";
+import { IpageChange, IuserDataTypes } from "../types/userListTypes";
 
 const SearchUserList = ({ usersData }: { usersData: IuserDataTypes }) => {
   const [isPageCount, setIsPageCount] = useState<number>(0);
@@ -78,7 +74,7 @@ const LeftBox = styled.div`
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    margin-right: 5px;
+    margin-right: 10px;
   }
   p {
     font-size: 1.5rem;
