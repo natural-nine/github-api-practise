@@ -1,14 +1,20 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 import { SearchTypes } from "../types/searchTypes";
 const Search = ({ searchRef, submitClick }: SearchTypes) => {
+  const location = useLocation();
   return (
     <SearchBox>
-      <SearchInput
-        ref={searchRef}
-        placeholder="Search Github Repositories or Users"
-      />
-      <Btn onClick={submitClick}>Search</Btn>
+      {location.pathname === "/" && (
+        <>
+          <SearchInput
+            ref={searchRef}
+            placeholder="Search Github Repositories or Users"
+          />
+          <Btn onClick={submitClick}>Search</Btn>
+        </>
+      )}
     </SearchBox>
   );
 };
@@ -28,7 +34,7 @@ const SearchInput = styled.input`
   border: 1px solid gray;
   border-radius: 15px;
   padding: 15px;
-  font-size: 2.2rem;
+  font-size: 1.5rem;
   opacity: 0.6;
 `;
 const Btn = styled.button`

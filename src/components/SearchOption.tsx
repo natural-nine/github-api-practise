@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
 import ReactSelect from "react-select";
 import { useSetRecoilState } from "recoil";
 import styled from "styled-components";
@@ -11,6 +12,7 @@ const options = [
 ];
 
 const SearchSelect = () => {
+  const location = useLocation();
   const setOptionValue = useSetRecoilState(searchOption);
   const [isOptions, setIsOptions] = useState<any>(null);
   const handleChange = (e: optionTypes) => {
@@ -22,13 +24,15 @@ const SearchSelect = () => {
   };
   return (
     <Wrap>
-      <ReactSelect
-        defaultValue={isOptions}
-        options={options}
-        onChange={handleChange}
-        minMenuHeight={75}
-        maxMenuHeight={80}
-      />
+      {location.pathname === "/" && (
+        <ReactSelect
+          defaultValue={isOptions}
+          options={options}
+          onChange={handleChange}
+          minMenuHeight={75}
+          maxMenuHeight={80}
+        />
+      )}
     </Wrap>
   );
 };

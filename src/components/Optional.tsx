@@ -23,24 +23,25 @@ const Optional = ({
   return (
     <Wrap>
       <OrderBox>
-        {isSortValue !== "sort options" && (
-          <>
-            <input
-              type="radio"
-              value="desc"
-              checked={isOrderValue === "desc"}
-              onChange={orderChange}
-            />
-            <span>desc</span>
-            <input
-              type="radio"
-              value="asc"
-              checked={isOrderValue === "asc"}
-              onChange={orderChange}
-            />
-            <span>asc</span>
-          </>
-        )}
+        {!isSortValue ||
+          (isSortValue !== "sort options" && (
+            <>
+              <input
+                type="radio"
+                value="desc"
+                checked={isOrderValue === "desc"}
+                onChange={orderChange}
+              />
+              <span>desc</span>
+              <input
+                type="radio"
+                value="asc"
+                checked={isOrderValue === "asc"}
+                onChange={orderChange}
+              />
+              <span>asc</span>
+            </>
+          ))}
       </OrderBox>
       <SortBox>
         <select value={isSortValue || ""} onChange={sortChange}>
@@ -78,7 +79,7 @@ const OrderBox = styled.div`
   }
 `;
 const SortBox = styled.div`
-  width: 20%;
+  width: 25%;
   height: 30px;
   display: flex;
   justify-content: flex-end;
