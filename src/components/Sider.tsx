@@ -39,9 +39,8 @@ const PageBar = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 0.5px solid #ecf0f1;
   border-radius: 10px;
-  background-color: #fff;
+  background-color: ${props => props.theme.pageBoxColor};
   div {
     width: 100%;
     height: 100%;
@@ -53,7 +52,7 @@ const PageBar = styled.div`
     span {
       margin-left: 10px;
       font-size: 1.5rem;
-      color: #494d50;
+      color: ${props => props.theme.textColor};
     }
   }
 `;
@@ -63,7 +62,8 @@ const HomeBox = styled.div<{ props: string }>`
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
-  background-color: ${props => props.props === "/" && "#f4f2ff"};
+  background-color: ${props =>
+    props.props === "/" && props.theme.pageInnerColor};
   box-shadow: ${props =>
     props.props === "/" && "0px 12px 42px rgba(0, 0, 0, 0.2)"};
   opacity: ${props => props.props !== "/" && "0.4"};
@@ -72,16 +72,19 @@ const SaveBox = styled.div<{ props: string }>`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: ${props => props.props === "/save" && "#f4f2ff"};
+  background-color: ${props =>
+    props.props === "/save" && props.theme.pageInnerColor};
   box-shadow: ${props =>
     props.props === "/save" && "0px 12px 42px rgba(0, 0, 0, 0.2)"};
   opacity: ${props => props.props !== "/save" && "0.4"};
 `;
 
 const HomeIcon = styled(FaSistrix)`
+  color: ${props => props.theme.textColor};
   font-size: 1.3rem;
 `;
 const SaveIcon = styled(FaAlignJustify)`
+  color: ${props => props.theme.textColor};
   font-size: 1.3rem;
 `;
 

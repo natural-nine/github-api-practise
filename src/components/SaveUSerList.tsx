@@ -36,7 +36,7 @@ const SaveUserList = ({ isSaveUserList, deleteUserClick }: IsaveUserList) => {
 const Wrap = styled.div`
   width: 100%;
   /* margin: 10px 0px; */
-  background-color: #fff;
+  /* background-color: #fff; */
 `;
 const UsersBox = styled.div`
   width: 100%;
@@ -46,7 +46,7 @@ const UsersBox = styled.div`
   padding: 15px 10px;
   display: flex;
   justify-content: space-between;
-  box-shadow: 0px 12px 42px rgba(0, 0, 0, 0.2);
+  box-shadow: ${props => props.theme.boxShadow};
 `;
 
 const LeftBox = styled.div`
@@ -63,6 +63,7 @@ const LeftBox = styled.div`
   }
   p {
     font-size: 1.5rem;
+    color: ${props => props.theme.textColor};
   }
 `;
 const RigthBox = styled.div`

@@ -7,6 +7,7 @@ import useToggle from "../hooks/useToggle";
 
 const ThemeMode = () => {
   const [toggle, setToggle] = useToggle(false);
+  // console.log(toggle);
   return (
     <ThemeBox>
       <SunIcon toggle={toggle} />

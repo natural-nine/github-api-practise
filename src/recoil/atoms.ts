@@ -29,3 +29,8 @@ export const pageValue = atom<number>({
   key: "page",
   default: 1,
 });
+
+export const initialValues = atom<boolean>({
+  key: "initial",
+  default: false,
+});

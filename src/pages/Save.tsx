@@ -11,7 +11,7 @@ type tabTypes = {
   tabUser: boolean;
 };
 
-const Save = () => {
+const Save = ({ toggle }: { toggle: boolean }) => {
   const [tabState, setTabState] = useState<tabTypes>({
     tabRepo: true,
     tabUser: false,
@@ -72,7 +72,6 @@ const Save = () => {
           deleteUserClick={deleteUserClick}
         />
       )}
-      {/* <EmptyData /> */}
     </Wrap>
   );
 };
@@ -81,9 +80,6 @@ const Wrap = styled.div`
   padding: 50px 25px 0px;
   display: flex;
   flex-direction: column;
-  p {
-    font-size: 1.5rem;
-  }
 `;
 
 const TabBox = styled.div`
@@ -96,24 +92,26 @@ const TabBox = styled.div`
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    /* background-color: ${props => props.theme.bgColor}; */
     p {
-      color: #494d50;
+      font-size: 1.5rem;
+      color: ${props => props.theme.textColor};
     }
   }
 `;
 const RepoBox = styled.div<{ props: boolean }>`
   width: 100%;
-  background-color: ${props => props.props && "white"};
-  border-left: ${props => !props.props && "1px solid #ecf0f1"};
-  border-top: ${props => !props.props && "1px solid #ecf0f1"};
+  background-color: ${props => props.props && props.theme.pageBoxColor};
+  border-left: ${props => !props.props && props.theme.borderColor};
+  border-top: ${props => !props.props && props.theme.borderColor};
   border-top: ${props => props.props && "3.5px solid #6d50ff"};
 `;
 const UserBox = styled.div<{ props: boolean }>`
   width: 100%;
+  background-color: ${props => props.props && props.theme.pageBoxColor};
+  border-top: ${props => !props.props && props.theme.borderColor};
+  border-right: ${props => !props.props && props.theme.borderColor};
   border-top: ${props => props.props && "3.5px solid #6d50ff"};
-  background-color: ${props => props.props && "white"};
-  border-top: ${props => !props.props && "1px solid #ecf0f1"};
-  border-right: ${props => !props.props && "1px solid #ecf0f1"};
 `;
 
 export default Save;

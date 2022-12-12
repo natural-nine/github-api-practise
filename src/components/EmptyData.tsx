@@ -16,8 +16,10 @@ const Wrap = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: ${props => props.theme.pageBoxColor};
   h1 {
     font-size: 2rem;
+    color: ${props => props.theme.textColor};
   }
 `;
 

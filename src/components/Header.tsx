@@ -44,13 +44,12 @@ const Header = () => {
 
 const Wrap = styled.section`
   width: 100%;
-  height: 80px;
+  height: 75px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0px 50px;
-  background-color: #fff;
-  border-bottom: 2px solid #f6f9fa;
+  background-color: ${props => props.theme.headerColor};
 `;
 
 const IconBox = styled.div`
@@ -61,6 +60,7 @@ const IconBox = styled.div`
 const GithubIcon = styled(FaGithub)`
   width: 100%;
   height: 100%;
+  color: ${props => props.theme.iconColor};
 `;
 
 const SearchThemeBox = styled.div`

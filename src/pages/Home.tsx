@@ -17,8 +17,9 @@ import { getSearchData, getUserData } from "../react-query/getData";
 import { IsaveRepo } from "../types/repoListTypes";
 import { IsaveUser } from "../types/userListTypes";
 import Error from "../components/Error";
+import EmptyData from "../components/EmptyData";
 
-const Home = () => {
+const Home = ({ toggle }: { toggle: boolean }) => {
   const isCurrentPage = useRecoilValue(pageValue);
   const isSearchRepoValue = useRecoilValue(searchRepoValue);
   const isSearchUserValue = useRecoilValue(searchUserValue);
@@ -110,31 +111,43 @@ const Home = () => {
       {isLoading && !isFetching && <Loading />}
       {data && (
         <React.Fragment>
-          <Optional
-            isOrderValue={isOrderValue}
-            setIsOrderValue={setIsOrderValue}
-            isSortValue={isSortValue}
-            setIsSortValue={setIsSortValue}
-          />
-          <SearchRepoList
-            data={data}
-            fetchNextPage={fetchNextPage}
-            hasNextPage={hasNextPage}
-            saveRepoClick={saveRepoClick}
-            isSaveRepoList={isSaveRepoList}
-            deleteRepoClick={deleteRepoClick}
-          />
+          {data.pages[0].data.total_count !== 0 ? (
+            <React.Fragment>
+              <Optional
+                isOrderValue={isOrderValue}
+                setIsOrderValue={setIsOrderValue}
+                isSortValue={isSortValue}
+                setIsSortValue={setIsSortValue}
+              />
+              <SearchRepoList
+                data={data}
+                fetchNextPage={fetchNextPage}
+                hasNextPage={hasNextPage}
+                saveRepoClick={saveRepoClick}
+                isSaveRepoList={isSaveRepoList}
+                deleteRepoClick={deleteRepoClick}
+              />
+            </React.Fragment>
+          ) : (
+            <EmptyData />
+          )}
         </React.Fragment>
       )}
       {isFetching && <Loading />}
       {usersLoading && <Loading />}
       {usersData && (
-        <SearchUserList
-          usersData={usersData}
-          saveUserClick={saveUserClick}
-          isSaveUserList={isSaveUserList}
-          deleteUserClick={deleteUserClick}
-        />
+        <React.Fragment>
+          {usersData.total_count !== 0 ? (
+            <SearchUserList
+              usersData={usersData}
+              saveUserClick={saveUserClick}
+              isSaveUserList={isSaveUserList}
+              deleteUserClick={deleteUserClick}
+            />
+          ) : (
+            <EmptyData />
+          )}
+        </React.Fragment>
       )}
       {isError && <Error />}
       {userError && <Error />}
