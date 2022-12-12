@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import SaveRepoList from "../components/SaveRepoList";
+import SaveUserList from "../components/SaveUSerList";
 
 type tabTypes = {
   [key: string]: boolean;
@@ -8,9 +10,12 @@ type tabTypes = {
 };
 
 const Save = () => {
-  const [tabState, setTabState] = useState({ tabRepo: true, tabUser: false });
+  const [tabState, setTabState] = useState<tabTypes>({
+    tabRepo: true,
+    tabUser: false,
+  });
   const tabClick = (e: React.MouseEvent<HTMLElement>) => {
-    const newTabState: tabTypes = { ...tabState };
+    const newTabState = { ...tabState };
     const activeTab = e.currentTarget.id;
     for (let key in newTabState) {
       key === activeTab
@@ -19,17 +24,18 @@ const Save = () => {
     }
     setTabState(newTabState);
   };
-  console.log(tabState);
   return (
     <Wrap>
       <TabBox>
-        <h1 id="tabRepo" onClick={tabClick}>
-          Repo
-        </h1>
-        <h1 id="tabUser" onClick={tabClick}>
-          User
-        </h1>
+        <RepoBox id="tabRepo" onClick={tabClick} props={tabState.tabRepo}>
+          <p>Repositories</p>
+        </RepoBox>
+        <UserBox id="tabUser" onClick={tabClick} props={tabState.tabUser}>
+          <p>Users</p>
+        </UserBox>
       </TabBox>
+      {tabState.tabRepo && <SaveRepoList />}
+      {tabState.tabUser && <SaveUserList />}
     </Wrap>
   );
 };
@@ -38,10 +44,39 @@ const Wrap = styled.div`
   padding: 50px 25px 0px;
   display: flex;
   flex-direction: column;
+  p {
+    font-size: 1.5rem;
+  }
 `;
 
 const TabBox = styled.div`
-  width: 100%;
+  width: 30%;
+  height: 40px;
   display: flex;
+  justify-content: space-between;
+  div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    p {
+      color: #494d50;
+    }
+  }
 `;
+const RepoBox = styled.div<{ props: boolean }>`
+  width: 100%;
+  background-color: ${props => props.props && "white"};
+  border-left: ${props => !props.props && "1px solid #ecf0f1"};
+  border-top: ${props => !props.props && "1px solid #ecf0f1"};
+  border-top: ${props => props.props && "3.5px solid #6d50ff"};
+`;
+const UserBox = styled.div<{ props: boolean }>`
+  width: 100%;
+  border-top: ${props => props.props && "3.5px solid #6d50ff"};
+  background-color: ${props => props.props && "white"};
+  border-top: ${props => !props.props && "1px solid #ecf0f1"};
+  border-right: ${props => !props.props && "1px solid #ecf0f1"};
+`;
+
 export default Save;

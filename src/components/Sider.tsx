@@ -54,6 +54,7 @@ const PageBar = styled.div`
     span {
       margin-left: 10px;
       font-size: 1.5rem;
+      color: #494d50;
     }
   }
 `;

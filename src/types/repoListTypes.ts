@@ -32,4 +32,23 @@ export interface repoListTypes {
   fetchNextPage: () => void;
   data: IpageTypes | undefined;
   hasNextPage: boolean | undefined;
+  saveRepoClick: (
+    id: number,
+    language: string,
+    name: string,
+    login: string,
+    description: string,
+    targazers_count: number
+  ) => void;
+  isSaveRepoList: IsaveRepo[];
+  deleteRepoClick: (id: number) => void;
+}
+
+export interface IsaveRepo {
+  id: number;
+  language: string;
+  name: string;
+  login: string;
+  description: string;
+  targazers_count: number;
 }

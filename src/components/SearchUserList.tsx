@@ -4,9 +4,14 @@ import { useRecoilState } from "recoil";
 import styled from "styled-components";
 import { pageValue } from "../recoil/atoms";
 import "../styles/pagination.css";
-import { IpageChange, IuserDataTypes } from "../types/userListTypes";
+import { IpageChange, IuserData } from "../types/userListTypes";
 
-const SearchUserList = ({ usersData }: { usersData: IuserDataTypes }) => {
+const SearchUserList = ({
+  usersData,
+  saveUserClick,
+  isSaveUserList,
+  deleteUserClick,
+}: IuserData) => {
   const [isPageCount, setIsPageCount] = useState<number>(0);
 
   const [isCurrentPage, setIsCurrentPage] = useRecoilState(pageValue);
@@ -20,7 +25,7 @@ const SearchUserList = ({ usersData }: { usersData: IuserDataTypes }) => {
     } else {
       setIsPageCount(Math.ceil(usersData.total_count / 20));
     }
-  }, []);
+  }, [usersData.total_count]);
   return (
     <React.Fragment>
       {usersData.items.map(i => (
@@ -30,7 +35,24 @@ const SearchUserList = ({ usersData }: { usersData: IuserDataTypes }) => {
             <p>{i.login}</p>
           </LeftBox>
           <RigthBox>
-            <Btn>Save</Btn>
+            {isSaveUserList.find(e => e.id === i.id) ? (
+              <Btn
+                style={{ backgroundColor: "#e74c3c" }}
+                onClick={() => {
+                  deleteUserClick(i.id);
+                }}
+              >
+                Delete
+              </Btn>
+            ) : (
+              <Btn
+                onClick={() => {
+                  saveUserClick(i.id, i.login, i.avatar_url);
+                }}
+              >
+                Save
+              </Btn>
+            )}
           </RigthBox>
         </UsersBox>
       ))}

@@ -9,6 +9,9 @@ const SearchRepoList = ({
   data,
   hasNextPage,
   fetchNextPage,
+  saveRepoClick,
+  isSaveRepoList,
+  deleteRepoClick,
 }: repoListTypes) => {
   return (
     <React.Fragment>
@@ -32,7 +35,31 @@ const SearchRepoList = ({
               </div>
             </LeftBox>
             <RigthBox>
-              <Btn>Save</Btn>
+              {isSaveRepoList.find(e => e.id === i.id) ? (
+                <Btn
+                  style={{ backgroundColor: "#e74c3c" }}
+                  onClick={() => {
+                    deleteRepoClick(i.id);
+                  }}
+                >
+                  Delete
+                </Btn>
+              ) : (
+                <Btn
+                  onClick={() => {
+                    saveRepoClick(
+                      i.id,
+                      i.language,
+                      i.name,
+                      i.owner.login,
+                      i.description,
+                      i.stargazers_count
+                    );
+                  }}
+                >
+                  Save
+                </Btn>
+              )}
             </RigthBox>
           </RepoBox>
         ))
