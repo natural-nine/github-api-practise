@@ -12,8 +12,10 @@ const GlobalStyles = createGlobalStyle`
 	vertical-align: baseline;
   }
   body {
+  font-family: 'Source Sans Pro', sans-serif;
   box-sizing: border-box;
-  background-color: #f6f9fa;
+  background-color: ${(props: any) => props.theme.bgColor};
+  
   }
   a {
     color: #000;

@@ -11,12 +11,10 @@ const Loading = () => {
 
 const Box = styled.div`
   width: 100%;
-  /* margin-top: -30%; */
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  /* margin-bottom: 50px; */
   p {
     margin-top: 30px;
     font-weight: 700;

@@ -76,6 +76,7 @@ const OrderBox = styled.div`
   }
   span {
     font-size: 1.4rem;
+    color: ${props => props.theme.textColor};
   }
 `;
 const SortBox = styled.div`
@@ -90,6 +91,8 @@ const SortBox = styled.div`
     font-size: 1.2rem;
     border-radius: 10px;
     padding: 2px;
+    color: ${props => props.theme.textColor};
+    background-color: ${props => props.theme.bgColor};
   }
 `;
 

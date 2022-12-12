@@ -7,13 +7,13 @@ const Search = ({ searchRef, submitClick }: SearchTypes) => {
   return (
     <SearchBox>
       {location.pathname === "/" && (
-        <>
+        <React.Fragment>
           <SearchInput
             ref={searchRef}
             placeholder="Search Github Repositories or Users"
           />
           <Btn onClick={submitClick}>Search</Btn>
-        </>
+        </React.Fragment>
       )}
     </SearchBox>
   );
@@ -31,11 +31,12 @@ const SearchBox = styled.div`
 const SearchInput = styled.input`
   width: 77%;
   height: 100%;
-  border: 1px solid gray;
+  border: 0.1px solid gray;
   border-radius: 15px;
   padding: 15px;
   font-size: 1.5rem;
-  opacity: 0.6;
+  background-color: ${props => props.theme.pageBoxColor};
+  color: ${props => props.theme.textColor};
 `;
 const Btn = styled.button`
   width: 18%;
@@ -43,8 +44,8 @@ const Btn = styled.button`
   font-size: 1.7rem;
   border-radius: 15px;
   border: none;
-  background-color: #0984e3;
-  color: #fff;
+  background-color: ${props => props.theme.btnColor};
+  color: ${props => props.theme.btnTextColor};
   cursor: pointer;
 `;
 

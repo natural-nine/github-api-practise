@@ -48,7 +48,7 @@ const SaveRepoList = ({ isSaveRepoList, deleteRepoClick }: IsaveList) => {
 };
 const Wrap = styled.div`
   width: 100%;
-  background-color: #fff;
+  /* background-color: #fff; */
 `;
 
 const RepoBox = styled.div`
@@ -59,7 +59,7 @@ const RepoBox = styled.div`
   padding: 15px 10px;
   display: flex;
   justify-content: space-between;
-  box-shadow: 0px 12px 42px rgba(0, 0, 0, 0.2);
+  box-shadow: ${props => props.theme.boxShadow};
 `;
 
 const LeftBox = styled.div`
@@ -75,9 +75,11 @@ const LeftBox = styled.div`
     height: 30px;
     span {
       font-size: 1.3rem;
+      color: ${props => props.theme.textColor};
     }
     p {
       font-size: 1.5rem;
+      color: ${props => props.theme.textColor};
     }
   }
   div:nth-child(2) {
@@ -107,6 +109,7 @@ const LeftBox = styled.div`
 const StarIcon = styled(FaRegStar)`
   margin: 0px 3px 2.3px 0px;
   opacity: 0.7;
+  color: ${props => props.theme.starColor};
 `;
 const CircleIcon = styled(FaRegCircle)<{ props: string }>`
   margin: 0px 3px 2px 0px;

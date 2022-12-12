@@ -5,7 +5,6 @@ import { ReactQueryDevtools } from "react-query/devtools";
 import { BrowserRouter } from "react-router-dom";
 import { RecoilRoot } from "recoil";
 import App from "./App";
-import GlobalStyles from "./styles/globalStyles";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -16,7 +15,6 @@ root.render(
     <ReactQueryDevtools initialIsOpen={false} />
     <RecoilRoot>
       <BrowserRouter>
-        <GlobalStyles />
         <App />
       </BrowserRouter>
     </RecoilRoot>
