@@ -5,24 +5,25 @@ import ThemeMode from "./ThemeMode";
 import { FaGithub } from "react-icons/fa";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import {
+  pageValue,
   searchOption,
   searchRepoValue,
   searchUserValue,
 } from "../recoil/atoms";
 import SearchSelect from "./SearchOption";
-import { useLocation } from "react-router-dom";
 
 const Header = () => {
-  const location = useLocation();
   const searchRef = useRef<HTMLInputElement>(null);
   const setIsRepoSearch = useSetRecoilState(searchRepoValue);
   const setIsUserSearch = useSetRecoilState(searchUserValue);
   const isOptionValue = useRecoilValue(searchOption);
+  const setIsCurrentPage = useSetRecoilState(pageValue);
   const submitClick = () => {
     if (isOptionValue === "Repository") {
       setIsUserSearch("");
       setIsRepoSearch(searchRef.current!.value);
     } else if (isOptionValue === "User") {
+      setIsCurrentPage(1);
       setIsRepoSearch("");
       setIsUserSearch(searchRef.current!.value);
     }

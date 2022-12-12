@@ -38,7 +38,8 @@ export interface repoListTypes {
     name: string,
     login: string,
     description: string,
-    targazers_count: number
+    targazers_count: number,
+    updated_at: string
   ) => void;
   isSaveRepoList: IsaveRepo[];
   deleteRepoClick: (id: number) => void;
@@ -51,4 +52,10 @@ export interface IsaveRepo {
   login: string;
   description: string;
   targazers_count: number;
+  updated_at: string;
+}
+
+export interface IsaveList {
+  isSaveRepoList: IsaveRepo[];
+  deleteRepoClick: (id: number) => void;
 }

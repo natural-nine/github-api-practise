@@ -18,7 +18,6 @@ const Sider = () => {
           <NavLink to="save">
             <SaveIcon />
             <span>Go Save Page</span>
-            <span>0</span>
           </NavLink>
         </SaveBox>
       </PageBar>
@@ -77,11 +76,6 @@ const SaveBox = styled.div<{ props: string }>`
   box-shadow: ${props =>
     props.props === "/save" && "0px 12px 42px rgba(0, 0, 0, 0.2)"};
   opacity: ${props => props.props !== "/save" && "0.4"};
-  span:last-child {
-    border-radius: 50%;
-    padding: 3px;
-    border: 1px solid red;
-  }
 `;
 
 const HomeIcon = styled(FaSistrix)`

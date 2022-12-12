@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import SaveRepoList from "../components/SaveRepoList";
 import SaveUserList from "../components/SaveUSerList";
+import { IsaveRepo } from "../types/repoListTypes";
+import { IsaveUser } from "../types/userListTypes";
 
 type tabTypes = {
   [key: string]: boolean;
@@ -14,6 +16,9 @@ const Save = () => {
     tabRepo: true,
     tabUser: false,
   });
+  const [isSaveRepoList, setIsSaveRepoList] = useState<IsaveRepo[]>([]);
+  const [isSaveUserList, setIsSaveUserList] = useState<IsaveUser[]>([]);
+
   const tabClick = (e: React.MouseEvent<HTMLElement>) => {
     const newTabState = { ...tabState };
     const activeTab = e.currentTarget.id;
@@ -24,18 +29,50 @@ const Save = () => {
     }
     setTabState(newTabState);
   };
+  useEffect(() => {
+    const repoData = localStorage.getItem("repoKey");
+    const userData = localStorage.getItem("userKey");
+    if (repoData) {
+      setIsSaveRepoList(JSON.parse(repoData));
+    }
+    if (userData) {
+      setIsSaveUserList(JSON.parse(userData));
+    }
+  }, []);
+  useEffect(() => {
+    localStorage.setItem("repoKey", JSON.stringify(isSaveRepoList));
+    localStorage.setItem("userKey", JSON.stringify(isSaveUserList));
+  }, [isSaveRepoList, isSaveUserList]);
+
+  const deleteRepoClick = (id: number) => {
+    setIsSaveRepoList(isSaveRepoList.filter(i => i.id !== id));
+  };
+  const deleteUserClick = (id: number) => {
+    setIsSaveUserList(isSaveUserList.filter(i => i.id !== id));
+  };
   return (
     <Wrap>
       <TabBox>
         <RepoBox id="tabRepo" onClick={tabClick} props={tabState.tabRepo}>
-          <p>Repositories</p>
+          <p>Repositories ({isSaveRepoList.length})</p>
         </RepoBox>
         <UserBox id="tabUser" onClick={tabClick} props={tabState.tabUser}>
-          <p>Users</p>
+          <p>Users ({isSaveUserList.length})</p>
         </UserBox>
       </TabBox>
-      {tabState.tabRepo && <SaveRepoList />}
-      {tabState.tabUser && <SaveUserList />}
+      {tabState.tabRepo && (
+        <SaveRepoList
+          isSaveRepoList={isSaveRepoList}
+          deleteRepoClick={deleteRepoClick}
+        />
+      )}
+      {tabState.tabUser && (
+        <SaveUserList
+          isSaveUserList={isSaveUserList}
+          deleteUserClick={deleteUserClick}
+        />
+      )}
+      {/* <EmptyData /> */}
     </Wrap>
   );
 };
