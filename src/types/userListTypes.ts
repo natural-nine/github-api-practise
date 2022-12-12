@@ -17,3 +17,16 @@ export interface IuserDataTypes {
 export interface userListTypes {
   data: IuserDataTypes | undefined;
 }
+
+export interface IsaveUser {
+  id: number;
+  login: string;
+  avatar_url: string;
+}
+
+export interface IuserData {
+  usersData: IuserDataTypes;
+  isSaveUserList: IsaveUser[];
+  deleteUserClick: (id: number) => void;
+  saveUserClick: (id: number, login: string, avatar_url: string) => void;
+}
