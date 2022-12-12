@@ -53,7 +53,8 @@ const SearchRepoList = ({
                       i.name,
                       i.owner.login,
                       i.description,
-                      i.stargazers_count
+                      i.stargazers_count,
+                      i.updated_at
                     );
                   }}
                 >

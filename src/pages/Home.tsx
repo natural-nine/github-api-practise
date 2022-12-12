@@ -16,6 +16,7 @@ import SearchUserList from "../components/SearchUserList";
 import { getSearchData, getUserData } from "../react-query/getData";
 import { IsaveRepo } from "../types/repoListTypes";
 import { IsaveUser } from "../types/userListTypes";
+import Error from "../components/Error";
 
 const Home = () => {
   const isCurrentPage = useRecoilValue(pageValue);
@@ -27,7 +28,7 @@ const Home = () => {
   const [isSaveRepoList, setIsSaveRepoList] = useState<IsaveRepo[]>([]);
   const [isSaveUserList, setIsSaveUserList] = useState<IsaveUser[]>([]);
 
-  const { data, isLoading, isFetching, fetchNextPage, hasNextPage } =
+  const { data, isLoading, isFetching, fetchNextPage, hasNextPage, isError } =
     useInfiniteQuery(
       ["repoData", isSearchRepoValue, isOrderValue, isSortValue],
       ({ pageParam = 1 }) =>
@@ -43,7 +44,11 @@ const Home = () => {
       }
     );
 
-  const { data: usersData, isLoading: usersLoading } = useQuery(
+  const {
+    data: usersData,
+    isLoading: usersLoading,
+    isError: userError,
+  } = useQuery(
     ["users", isSearchUserValue, isCurrentPage],
     () => getUserData(isCurrentPage, isSearchUserValue),
     {
@@ -52,10 +57,12 @@ const Home = () => {
     }
   );
   useEffect(() => {
-    const repoData: any = localStorage.getItem("repoKey");
-    const userData: any = localStorage.getItem("userKey");
-    if (repoData || userData) {
+    const repoData = localStorage.getItem("repoKey");
+    const userData = localStorage.getItem("userKey");
+    if (repoData) {
       setIsSaveRepoList(JSON.parse(repoData));
+    }
+    if (userData) {
       setIsSaveUserList(JSON.parse(userData));
     }
   }, []);
@@ -63,13 +70,15 @@ const Home = () => {
     localStorage.setItem("repoKey", JSON.stringify(isSaveRepoList));
     localStorage.setItem("userKey", JSON.stringify(isSaveUserList));
   }, [isSaveRepoList, isSaveUserList]);
+
   const saveRepoClick = (
     id: number,
     language: string,
     name: string,
     login: string,
     description: string,
-    targazers_count: number
+    targazers_count: number,
+    updated_at: string
   ) => {
     const listData = {
       id,
@@ -78,6 +87,7 @@ const Home = () => {
       login,
       description,
       targazers_count,
+      updated_at,
     };
     setIsSaveRepoList(prev => [...prev, listData]);
   };
@@ -95,7 +105,6 @@ const Home = () => {
   const deleteUserClick = (id: number) => {
     setIsSaveUserList(isSaveUserList.filter(i => i.id !== id));
   };
-
   return (
     <Wrap>
       {isLoading && !isFetching && <Loading />}
@@ -127,6 +136,8 @@ const Home = () => {
           deleteUserClick={deleteUserClick}
         />
       )}
+      {isError && <Error />}
+      {userError && <Error />}
     </Wrap>
   );
 };

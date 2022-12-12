@@ -30,3 +30,8 @@ export interface IuserData {
   deleteUserClick: (id: number) => void;
   saveUserClick: (id: number, login: string, avatar_url: string) => void;
 }
+
+export interface IsaveUserList {
+  isSaveUserList: IsaveUser[];
+  deleteUserClick: (id: number) => void;
+}
