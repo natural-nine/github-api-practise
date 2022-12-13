@@ -23,7 +23,6 @@ const SearchSelect = () => {
     } else if (option?.value === "User") {
       setOptionValue(option.value);
     }
-    console.log(option?.label);
   };
   return (
     <Wrap>
