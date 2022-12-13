@@ -5,15 +5,19 @@
     typescript와 react-query를 연습하기 위해 만들어 보았습니다.
 ```
 # 시현영상
-
+---
 1. 레포지토리 검색 및 무한스크롤
     - <img src="https://user-images.githubusercontent.com/92094314/207234457-e5e4c9ce-6396-41a2-8039-36018ab586ef.gif" alt="gif-1"/>
+---
 2. 레포지토리 sorting 분류
     - <img src="https://user-images.githubusercontent.com/92094314/207235335-c33751cd-9a54-4fbd-ae78-65d2e1f18910.gif" alt="gif-2">
+---
 3. 유저 검색 및 페이지네이션
    - <img src="https://user-images.githubusercontent.com/92094314/207234789-a2d6abab-6963-4a02-8315-cbbe21c43fa4.gif" alt="gif-3" />
+---
 4. 레포지토리, 유저 localStorage 에 저장
     - <img src="https://user-images.githubusercontent.com/92094314/207234976-f41ae668-715c-4dbc-9c16-8d21012dd60b.gif" alt="gif-4"/>
+---
 5. 다크모드
     - <img src="https://user-images.githubusercontent.com/92094314/207235465-09378805-508e-4ec9-ae7d-42405341c9d9.gif" alt="gif-5"/>
 
