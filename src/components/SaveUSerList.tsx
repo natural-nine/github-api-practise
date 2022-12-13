@@ -35,8 +35,7 @@ const SaveUserList = ({ isSaveUserList, deleteUserClick }: IsaveUserList) => {
 
 const Wrap = styled.div`
   width: 100%;
-  /* margin: 10px 0px; */
-  /* background-color: #fff; */
+  background-color: ${props => props.theme.pageBoxColor};
 `;
 const UsersBox = styled.div`
   width: 100%;

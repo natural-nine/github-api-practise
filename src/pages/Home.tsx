@@ -90,7 +90,11 @@ const Home = ({ toggle }: { toggle: boolean }) => {
       targazers_count,
       updated_at,
     };
-    setIsSaveRepoList(prev => [...prev, listData]);
+    if (isSaveRepoList.length < 4) {
+      setIsSaveRepoList(prev => [...prev, listData]);
+    } else {
+      alert("Sorry :( ");
+    }
   };
   const saveUserClick = (id: number, login: string, avatar_url: string) => {
     const listData = {
@@ -98,7 +102,11 @@ const Home = ({ toggle }: { toggle: boolean }) => {
       login,
       avatar_url,
     };
-    setIsSaveUserList(prev => [...prev, listData]);
+    if (isSaveUserList.length < 3) {
+      setIsSaveUserList(prev => [...prev, listData]);
+    } else {
+      alert("Sorry :( ");
+    }
   };
   const deleteRepoClick = (id: number) => {
     setIsSaveRepoList(isSaveRepoList.filter(i => i.id !== id));

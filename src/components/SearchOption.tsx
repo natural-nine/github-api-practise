@@ -1,31 +1,35 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
-import ReactSelect from "react-select";
+import ReactSelect, { ActionMeta, StylesConfig } from "react-select";
 import { useSetRecoilState } from "recoil";
 import styled from "styled-components";
 import { searchOption } from "../recoil/atoms";
 import { optionTypes } from "../types/searchTypes";
 
-const options = [
+const options: optionTypes[] = [
   { value: "Repository", label: "Repository" },
   { value: "User", label: "User" },
 ];
-
 const SearchSelect = () => {
   const location = useLocation();
   const setOptionValue = useSetRecoilState(searchOption);
   const [isOptions, setIsOptions] = useState<any>(null);
-  const handleChange = (e: optionTypes) => {
-    if (e.value === "Repository") {
-      setOptionValue(e.value);
-    } else if (e.value === "User") {
-      setOptionValue(e.value);
+  const handleChange = (
+    option: optionTypes | null,
+    actionMeta: ActionMeta<optionTypes>
+  ) => {
+    if (option?.value === "Repository") {
+      setOptionValue(option.value);
+    } else if (option?.value === "User") {
+      setOptionValue(option.value);
     }
+    console.log(option?.label);
   };
   return (
     <Wrap>
       {location.pathname === "/" && (
         <ReactSelect
+          className="select"
           defaultValue={isOptions}
           options={options}
           onChange={handleChange}

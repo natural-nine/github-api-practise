@@ -1,6 +1,6 @@
 export interface optionTypes {
-  value: string;
-  label: string;
+  value: string | null;
+  label: string | null;
 }
 
 

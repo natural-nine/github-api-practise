@@ -29,8 +29,12 @@ const SearchRepoList = ({
               <div>
                 <StarIcon />
                 <span>{i.stargazers_count}</span>
-                <CircleIcon props={getCreateLanColor(i.language)} />
-                <span>{i.language}</span>
+                {i.language && (
+                  <React.Fragment>
+                    <CircleIcon props={getCreateLanColor(i.language)} />
+                    <span>{i.language}</span>
+                  </React.Fragment>
+                )}
                 <span>Updated {getCreateDate(i.updated_at)}</span>
               </div>
             </LeftBox>

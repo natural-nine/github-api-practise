@@ -49,6 +49,7 @@ const SaveRepoList = ({ isSaveRepoList, deleteRepoClick }: IsaveList) => {
 const Wrap = styled.div`
   width: 100%;
   /* background-color: #fff; */
+  background-color: ${props => props.theme.pageBoxColor};
 `;
 
 const RepoBox = styled.div`

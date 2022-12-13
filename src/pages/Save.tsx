@@ -92,7 +92,6 @@ const TabBox = styled.div`
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    /* background-color: ${props => props.theme.bgColor}; */
     p {
       font-size: 1.5rem;
       color: ${props => props.theme.textColor};
