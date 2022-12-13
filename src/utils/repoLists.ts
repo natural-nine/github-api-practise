@@ -41,6 +41,8 @@ export const getCreateLanColor = (language: string) => {
     lanColor = "#5b5b5b";
   } else if (language === "Jupyter Notebook") {
     lanColor = "#da5b0c";
+  } else if (language === "Go") {
+    lanColor = "#01add8";
   } else {
     lanColor = "none";
   }
